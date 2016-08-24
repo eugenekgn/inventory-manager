@@ -1,7 +1,9 @@
-(function () {
-    'use strict';
+(function() {
+  'use strict';
 
-    let app = angular.module('inventoryApp', [
-        'products'
-    ]);
+  let app = angular.module('inventoryApp', [
+    'common.mocks',
+    'common.services',
+    'inventory'
+  ]);
 })();

@@ -4,17 +4,26 @@
 <head>
     <title>Inventory Manager</title>
     <meta charset="UTF-8">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="style/css.css" rel="stylesheet">
 
     <script src="node_modules/angular/angular.js"></script>
-    
-    <script src="app/products-list/products.module.js"></script>
-    <script src="app/products-list/productsList.component.js"></script>
-    <script src="app/app.js"></script>     
+    <script src="node_modules/angular-resource/angular-resource.js"></script>
+    <script src="node_modules/angular-mocks/angular-mocks.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+
+    <script src="app/common/common.services.module.js"></script>
+    <script src="app/common/common.mocks.module.js"></script>
+    <script src="app/common/productsResource.services.js"></script>
+    <script src="app/common/productsResource.mocks.js"></script>
+
+    <script src="app/product/product.module.js"></script>
+    <script src="app/product/product.component.js"></script>
+    <script src="app/app.js"></script>
 </head>
 
 <body ng-app="inventoryApp">
-
+<products-list></products-list>
 </body>
 
 </html>
