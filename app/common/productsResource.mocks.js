@@ -1,14 +1,17 @@
-(function () {
+(function() {
   'use strict';
 
 
-  angular.module('common.mocks')
-    .factory('productsResourceMock', productsResourceMock);
+  let app = angular.module('common.mocks', ['ngMockE2E']);
+
+  app.run(commonMocksConfig);
 
 
-  function productsResourceMock($httpBackend) {
+  function commonMocksConfig($httpBackend) {
+
     let products = [
       {
+        productId: 0,
         name: 'House Phone',
         model: 'HP1',
         code: 'vxc10',
@@ -17,6 +20,7 @@
         imageUrl: 'images/phone.png'
       },
       {
+        productId: 1,
         name: 'Computer',
         model: 'MP1',
         code: 'rc11',
@@ -25,6 +29,7 @@
         imageUrl: 'images/computer.png'
       },
       {
+        productId: 2,
         name: 'Keyboard',
         model: 'HP2',
         code: 'vxc11',
@@ -33,6 +38,7 @@
         imageUrl: 'images/keyboard.png'
       },
       {
+        productId: 3,
         name: 'monitor',
         model: 'HP2',
         code: 'vx10',
@@ -41,6 +47,7 @@
         imageUrl: 'images/monitor.png'
       },
       {
+        productId: 4,
         name: 'laptop',
         model: 'lp2',
         code: 'cvc112',
@@ -50,8 +57,24 @@
       }
     ];
 
-    let productUrl = '/api/products';
 
-    $httpBackend.whenGet(productUrl).respond(inventory);
+    function productResponse(method, url, data) {
+      let productItem = {'product': 0};
+      let parameters = url.split('/');
+      let length = parameters.length;
+      let id = parameters[length - 1];
+
+      return _.find(products, (product)=> {
+          return product.productId == productItem.productId;
+        }) || productItem;
+    }
+
+    let productUrl = '/api/products';
+    let editingRegex = new RegExp(productUrl + '/[0-9][0-9]*', '');
+
+    $httpBackend.whenGET(productUrl).respond(products);
+    $httpBackend.whenGET(editingRegex).respond(productResponse);
+    $httpBackend.whenGET(/app/).passThrough();
   }
+
 })();

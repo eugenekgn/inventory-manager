@@ -9,11 +9,9 @@
       vm.showImage = !vm.showImage;
     };
 
-
     productsResource.query((data)=> {
-      vm.product = data;
+      vm.products = data;
     });
-
   }
 
   angular.module('inventory')

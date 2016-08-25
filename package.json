@@ -13,6 +13,7 @@
     "angular-mocks": "^1.5.8",
     "angular-resource": "^1.5.8",
     "angular-ui-bootstrap": "^2.1.2",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "lodash": "^4.15.0"
   }
 }
