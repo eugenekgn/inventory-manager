@@ -8,6 +8,7 @@
   productsResource.$inject = [];
 
   function productsResource($resource) {
+    console.log('call');
     return $resource('/api/products/:productId');
   }
 })();

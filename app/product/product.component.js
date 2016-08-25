@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  function InventoryController() {
+  function InventoryController(productsResource) {
     let vm = this;
 
     vm.showImage = true;
@@ -10,9 +10,9 @@
     };
 
 
-    // productsResource.query((data)=> {
-    //   vm.product = data;
-    // });
+    productsResource.query((data)=> {
+      vm.product = data;
+    });
 
   }
 

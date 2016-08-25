@@ -1,11 +1,10 @@
-(function() {
+(function () {
   'use strict';
 
 
   angular.module('common.mocks')
     .factory('productsResourceMock', productsResourceMock);
 
-  productsResourceMock.$inject = [];
 
   function productsResourceMock($httpBackend) {
     let products = [
@@ -54,6 +53,5 @@
     let productUrl = '/api/products';
 
     $httpBackend.whenGet(productUrl).respond(inventory);
-    $httpBackend.whenGET(/^\/product\//).passThrough();
   }
 })();
